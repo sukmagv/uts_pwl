@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Kios Sahabat Tani | Home</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -29,11 +29,6 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
-
   <!-- Navbar -->
   @include('layouts.navbar')
   <!-- /.navbar -->
@@ -42,7 +37,9 @@
   @include('layouts.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
-  @yield('layouts.content')
+  <div class="content-wrapper">
+    @yield('layouts.content')
+  </div>
   <!-- /.content-wrapper -->
   @include('layouts.footer')
 
@@ -84,9 +81,9 @@
 <script src="{{asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('assets/dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
+{{-- <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('assets/dist/js/pages/dashboard.js')}}"></script>
+<script src="{{asset('assets/dist/js/pages/dashboard.js')}}"></script> --}}
 </body>
 </html>
