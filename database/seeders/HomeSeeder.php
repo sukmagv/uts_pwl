@@ -14,6 +14,6 @@ class HomeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
     }
 }
