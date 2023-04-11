@@ -14,7 +14,9 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $sp = Supplier::all();
+        return view('supplier.supplier')
+                ->with('sp', $sp);
     }
 
     /**
