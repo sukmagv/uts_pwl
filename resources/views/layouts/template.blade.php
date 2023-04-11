@@ -38,7 +38,8 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    @yield('layouts.content')
+    @include('layouts.header')
+    @yield('content')
   </div>
   <!-- /.content-wrapper -->
   @include('layouts.footer')
