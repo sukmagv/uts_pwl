@@ -14,9 +14,24 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $in = Inventory::all();
-        return view('inventory.inventory')
-                ->with('in', $in);
+        // $in = Inventory::all();
+        // // return view('inventory.inventory')
+        // //     ->with('in', $in);
+        // $inventory = Inventory::paginate(5);
+        // return view('inventory.inventory', ['inventory' => $inventory])
+        //         ->with('inventory', $inventory)
+        //         ->with('in', $in);
+        if(\Illuminate\Support\Facades\Request::get('query') !== null){
+            $query = \Illuminate\Support\Facades\Request::get('query');
+            $inventory = Inventory::where('nama', 'LIKE', '%'.$query.'%')
+                ->orWhere('harga', 'LIKE', '%'.$query.'%')
+                ->orWhere('stok', 'LIKE', '%'.$query.'%')
+                ->orWhere('satuan', 'LIKE', '%'.$query.'%')
+                ->paginate(5);
+        } else {
+            $inventory = Inventory::paginate(5);
+        }
+        return view('inventory.inventory', ['inventory' => $inventory]);
     }
 
     /**
@@ -28,6 +43,7 @@ class InventoryController extends Controller
     {
         return view('inventory.create_inventory')
             ->with('url_form', url('/inventory/') );
+       
     }
 
     /**
@@ -45,9 +61,11 @@ class InventoryController extends Controller
             'satuan' => 'required|string'
         ]);
 
-        $data = Inventory::create($request->except(['_token']));
-        return redirect('inventory')
-            ->with('success', 'Data Inventory Berhasil Ditambahkan');
+            $data = Inventory::create($request->except(['_token']));
+            return redirect('inventory')
+                ->with('success', 'Data Inventory Berhasil Ditambahkan');
+        // Inventory::create($request->all());
+        // return redirect('/inventory')->with('success', 'Inventory Berhasil Ditambahkan!');
     }
 
     /**
@@ -56,9 +74,9 @@ class InventoryController extends Controller
      * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function show(Inventory $inventory)
+    public function show($id)
     {
-        //
+       //
     }
 
     /**

@@ -34,6 +34,10 @@
       </div>
       <div class="card-body">
         <a href="{{url('inventory/create')}}" class="btn btn-sm btn-success my-2">Add Data</a>
+        <form action="" method="GET" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
         <table class="table table-bordered table-striped">
           <thead>
           <tr>
@@ -46,8 +50,8 @@
           </thead>
 
           <tbody>
-          @if($in->count()>0)
-                @foreach ($in as $i => $n)
+          @if($inventory->count() >0)
+                @foreach ($inventory as $i => $n)
                   <tr>
                     <td>{{++$i}}</td>
                     <td>{{$n->nama}}</td>
@@ -71,6 +75,7 @@
               @endif
           </tbody>
         </table>
+        <div class="pagination justify-content-end mt-2"> {{ $inventory->withQueryString()->links() }}</div>
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
