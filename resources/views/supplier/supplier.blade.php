@@ -34,6 +34,10 @@
       </div>
       <div class="card-body">
         <a href="{{url('supplier/create')}}" class="btn btn-sm btn-success my-2">Add Data</a>
+        <form action="" method="GET" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
         <table class="table table-bordered table-striped">
           <thead>
           <tr>
@@ -62,6 +66,7 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                       </form>
+                      {{-- <a href="{{ url('/supplier/' . $s->id) }}" class="btn btn-sm btn-info fas fa-eye"></a> --}}
                     </td>
                   </tr>
                 @endforeach
@@ -70,6 +75,7 @@
               @endif
           </tbody>
         </table>
+        <div class="pagination justify-content-end mt-2">  {{ $sp->withQueryString()->links() }}</div>
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
