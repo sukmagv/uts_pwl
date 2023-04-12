@@ -14,9 +14,20 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $sp = Supplier::all();
-        return view('supplier.supplier')
-                ->with('sp', $sp);
+        // $sp = Supplier::all();
+        // return view('supplier.supplier')
+        //         ->with('sp', $sp);
+
+        if(\Illuminate\Support\Facades\Request::get('query') !== null){
+            $query = \Illuminate\Support\Facades\Request::get('query');
+            $sp = Supplier::where('nama', 'LIKE', '%'.$query.'%')
+                ->orWhere('alamat', 'LIKE', '%'.$query.'%')
+                ->orWhere('no_tlp', 'LIKE', '%'.$query.'%')
+                ->paginate(3);
+        } else {
+            $sp = Supplier::paginate(3);
+        }
+        return view('supplier.supplier', ['sp' => $sp]);
     }
 
     /**
@@ -56,9 +67,10 @@ class SupplierController extends Controller
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function show(Supplier $supplier)
+    public function show($id)
     {
-        //
+        $sp = Supplier::find($id);
+        return view('supplier.show_supplier', ['sp' => $sp]);
     }
 
     /**
