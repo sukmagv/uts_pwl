@@ -69,8 +69,7 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        $sp = Supplier::find($id);
-        return view('supplier.show_supplier', ['sp' => $sp]);
+        //
     }
 
     /**
