@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,5 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     // Route::get('/', [HomeController::class, 'index']);
     Route::resource('/supplier', SupplierController::class)->parameter('supplier', 'id');
+    Route::resource('/inventory', InventoryController::class)->parameter('inventory', 'id');
 });

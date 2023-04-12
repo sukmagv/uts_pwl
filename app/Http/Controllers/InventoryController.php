@@ -14,7 +14,9 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        //
+        $in = Inventory::all();
+        return view('inventory.inventory')
+                ->with('in', $in);
     }
 
     /**
