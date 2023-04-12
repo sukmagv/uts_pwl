@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="card-body">
-        <a href="{{url('supplier/create')}}" class="btn btn-sm btn-success my-2">Add Data</a>
+        <a href="{{url('inventory/create')}}" class="btn btn-sm btn-success my-2">Add Data</a>
         <table class="table table-bordered table-striped">
           <thead>
           <tr>
