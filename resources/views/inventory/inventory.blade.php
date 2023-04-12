@@ -62,7 +62,7 @@
                       <a href="{{url('/inventory/'. $n->id.'/edit/')}}"
                       class="btn btn-sm btn-warning">Edit</a>
 
-                      <form method="POST" action="{{url('/inventory/'.$n->id)}}">
+                      <form method="POST" action="{{url('/inventory/'.$n->id)}}"onsubmit="return confirm('Apakah Anda Yakin Ingin Menghapus data?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
