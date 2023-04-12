@@ -21,27 +21,35 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Title</h3>
-
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-            <i class="fas fa-times"></i>
-          </button>
+        <h3 class="card-title">Selamat Datang Di Kios Sahabat Tani</h3>
+      </div>
+    </div>
+    <div class="card-group">
+        <div class="card border border-primary rounded mb-3 mr-4" style="max-width: 540px;">
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title text text-bold">Yisha Zukhrufin A</h5>
+                <p class="card-text mb-0">Kelas : TI-2B</p>
+                <p class="card-text mb-0">NIM : 2141720013</p>
+                <p class="card-text">Absen : 28</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card border border-primary rounded mb-3 mr-4" style="max-width: 540px;">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title text text-bold">Sukma Gladys V</h5>
+              <p class="card-text mb-0">Kelas : TI-2B</p>
+              <p class="card-text mb-0">NIM : 2141720179</p>
+              <p class="card-text">Absen : 25</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="card-body">
-        Start creating your amazing application!
-      </div>
-      <!-- /.card-body -->
-      <div class="card-footer">
-        Footer
-      </div>
-      <!-- /.card-footer-->
     </div>
-    <!-- /.card -->
+
+        
 
   </section>
 @endsection
