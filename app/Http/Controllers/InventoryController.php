@@ -26,7 +26,8 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('inventory.create_inventory')
+            ->with('url_form', url('/inventory/') );
     }
 
     /**
@@ -37,7 +38,16 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string',
+            'harga' => 'required|integer',
+            'stok' => 'required|integer',
+            'satuan' => 'required|string'
+        ]);
+
+        $data = Inventory::create($request->except(['_token']));
+        return redirect('inventory')
+            ->with('success', 'Data Inventory Berhasil Ditambahkan');
     }
 
     /**
@@ -57,9 +67,12 @@ class InventoryController extends Controller
      * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventory $inventory)
+    public function edit($id)
     {
-        //
+        $inventory = Inventory::find($id);
+       return view('inventory.create_inventory')
+        ->with('in', $inventory)
+        ->with('url_form', url('/inventory/'. $id));
     }
 
     /**
@@ -69,9 +82,18 @@ class InventoryController extends Controller
      * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventory $inventory)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string',
+            'harga' => 'required|integer',
+            'stok' => 'required|integer',
+            'satuan' => 'required|string'
+        ]);
+
+        $data = Inventory::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('inventory')
+            ->with('success', 'Data Inventory Berhasil Ditambahkan');
     }
 
     /**
@@ -80,8 +102,10 @@ class InventoryController extends Controller
      * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventory $inventory)
+    public function destroy($id)
     {
-        //
+        Inventory::where('id', '=', $id)->delete();
+        return redirect('inventory')
+        ->with('success', 'Data Inventory Berhasil Ditambahkan');
     }
 }
