@@ -103,7 +103,7 @@ class SupplierController extends Controller
         $data = Supplier::where('id', '=', $id)->update($request->except(['_token', '_method']));
         //jika berhasil ditambah, akan kembali ke hal.awal
         return redirect('supplier')
-                ->with('success', 'Supplier Berhasil Ditambahkan');
+                ->with('success', 'Supplier Berhasil Diupdate');
     }
 
     /**

@@ -61,12 +61,11 @@
                       <a href="{{url('/supplier/'. $s->id.'/edit/')}}"
                       class="btn btn-sm btn-warning">Edit</a>
 
-                      <form method="POST" action="{{url('/supplier/'.$s->id)}}">
+                      <form method="POST" action="{{url('/supplier/'.$s->id)}}"onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                       </form>
-                      {{-- <a href="{{ url('/supplier/' . $s->id) }}" class="btn btn-sm btn-info fas fa-eye"></a> --}}
                     </td>
                   </tr>
                 @endforeach
