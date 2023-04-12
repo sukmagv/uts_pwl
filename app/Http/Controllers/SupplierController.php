@@ -26,7 +26,8 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('supplier.create_supplier')
+                ->with('url_form', url('/supplier'));
     }
 
     /**
@@ -37,7 +38,16 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:100',
+            'alamat' => 'required|string|max:255',
+            'no_tlp' => 'required|digits_between:6,15'
+        ]);
+
+        $data = Supplier::create($request->except(['_token']));
+        //jika berhasil ditambah, akan kembali ke hal.awal
+        return redirect('supplier')
+                ->with('success', 'Supplier Berhasil Ditambahkan');
     }
 
     /**
@@ -57,9 +67,12 @@ class SupplierController extends Controller
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function edit(Supplier $supplier)
+    public function edit($id)
     {
-        //
+        $supplier = Supplier::find($id);
+        return view('supplier.create_supplier')
+                ->with('sp', $supplier)
+                ->with('url_form', url('/supplier/'.$id));
     }
 
     /**
@@ -69,9 +82,17 @@ class SupplierController extends Controller
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:100',
+            'alamat' => 'required|string|max:255',
+            'no_tlp' => 'required|digits_between:6,15'
+        ]);
+        $data = Supplier::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        //jika berhasil ditambah, akan kembali ke hal.awal
+        return redirect('supplier')
+                ->with('success', 'Supplier Berhasil Ditambahkan');
     }
 
     /**
@@ -80,8 +101,11 @@ class SupplierController extends Controller
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Supplier $supplier)
+    public function destroy($id)
     {
-        //
+        Supplier::where('id', '=', $id)->delete();
+        //jika berhasil ditambah, akan kembali ke hal.awal
+        return redirect('supplier')
+                ->with('success', 'Supplier Berhasil Dihapus');
     }
 }
