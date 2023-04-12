@@ -34,6 +34,10 @@
       </div>
       <div class="card-body">
         <a href="{{url('inventory/create')}}" class="btn btn-sm btn-success my-2">Add Data</a>
+        <form action="" method="GET" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
         <table class="table table-bordered table-striped">
           <thead>
           <tr>
@@ -71,7 +75,7 @@
               @endif
           </tbody>
         </table>
-        {{ $inventory->links() }}
+        <div class="pagination justify-content-end mt-2"> {{ $inventory->withQueryString()->links() }}</div>
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
