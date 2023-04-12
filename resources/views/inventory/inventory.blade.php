@@ -46,8 +46,8 @@
           </thead>
 
           <tbody>
-          @if($in->count()>0)
-                @foreach ($in as $i => $n)
+          @if($inventory->count() >0)
+                @foreach ($inventory as $i => $n)
                   <tr>
                     <td>{{++$i}}</td>
                     <td>{{$n->nama}}</td>
@@ -71,6 +71,7 @@
               @endif
           </tbody>
         </table>
+        {{ $inventory->links() }}
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
