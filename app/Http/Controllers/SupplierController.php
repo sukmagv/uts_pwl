@@ -12,14 +12,10 @@ class SupplierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $sp = Supplier::all();
-        // return view('supplier.supplier')
-        //         ->with('sp', $sp);
-
-        if(\Illuminate\Support\Facades\Request::get('query') !== null){
-            $query = \Illuminate\Support\Facades\Request::get('query');
+        if($request->get('query') !== null){
+            $query = $request->get('query');
             $sp = Supplier::where('nama', 'LIKE', '%'.$query.'%')
                 ->orWhere('alamat', 'LIKE', '%'.$query.'%')
                 ->orWhere('no_tlp', 'LIKE', '%'.$query.'%')

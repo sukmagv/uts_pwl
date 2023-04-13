@@ -12,17 +12,10 @@ class InventoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $in = Inventory::all();
-        // // return view('inventory.inventory')
-        // //     ->with('in', $in);
-        // $inventory = Inventory::paginate(5);
-        // return view('inventory.inventory', ['inventory' => $inventory])
-        //         ->with('inventory', $inventory)
-        //         ->with('in', $in);
-        if(\Illuminate\Support\Facades\Request::get('query') !== null){
-            $query = \Illuminate\Support\Facades\Request::get('query');
+        if($request->get('query') !== null){
+            $query = $request->get('query');
             $inventory = Inventory::where('nama', 'LIKE', '%'.$query.'%')
                 ->orWhere('harga', 'LIKE', '%'.$query.'%')
                 ->orWhere('stok', 'LIKE', '%'.$query.'%')
