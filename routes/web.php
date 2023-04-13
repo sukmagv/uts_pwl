@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\SupplierController;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+// Route::get('/register', [RegisterController::class, 'register']);
 Route::get('logout',[LoginController::class, 'logout']);
 Route::middleware(['auth'])->group(function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

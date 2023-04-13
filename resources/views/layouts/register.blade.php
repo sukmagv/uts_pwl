@@ -22,7 +22,7 @@
 
   <div class="card">
     <div class="card-body register-card-body">
-      <p class="login-box-msg">Register a new membership</p>
+      <p class="login-box-msg">Register a new account</p>
 
       <form method="POST" action="register">
         @csrf
@@ -76,8 +76,9 @@
         </div>
       </form>
 
-      <a href="{{ url('/login') }}" class="text-center">I already have a membership</a>
+      <a href="{{ url('/login') }}" class="text-center">I already have a account</a>
     </div>
+    @include('flash-message')
     <!-- /.form-box -->
   </div><!-- /.card -->
 </div>
